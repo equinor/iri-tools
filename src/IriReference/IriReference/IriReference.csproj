@@ -4,11 +4,10 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-
         <PackageReadMeFile>README.md</PackageReadMeFile>
-        <PackageId>Record</PackageId>
-        <VersionPrefix>6.3.0$(ReleaseType)</VersionPrefix>
-
+        <PackageLicenseUrl>https://www.gnu.org/licenses/lgpl-3.0.html</PackageLicenseUrl>
+        <PackageId>IriReference</PackageId>
+        <VersionPrefix>1.0.0</VersionPrefix>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
