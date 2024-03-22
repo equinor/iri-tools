@@ -21,6 +21,6 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore ./src/IriTools.sln
       - name: Build
-        run: dotnet build ./src/IriTools.sln --no-restore -c release /p:'description="A library for IRI References, compatible with Rdf."'
+        run: dotnet build ./src/IriTools.sln --no-restore -c release
       - name: Publish
         run: dotnet nuget push ./src/IriTools/bin/release/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }}  --source https://api.nuget.org/v3/index.json
