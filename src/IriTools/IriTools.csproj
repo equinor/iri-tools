@@ -4,17 +4,22 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Copyright>Copyright (c) Equinor 2024.</Copyright>
         <PackageReadMeFile>README.md</PackageReadMeFile>
-        <PackageLicenseUrl>https://www.gnu.org/licenses/lgpl-3.0.html</PackageLicenseUrl>
-        <PackageReleaseNotes>First release</PackageReleaseNotes>
+        <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
+        <PackageReleaseNotes>First release, includes IriReference</PackageReleaseNotes>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageTags>RDF,URI</PackageTags>
-        <PackageId>IriReference</PackageId>
-        <VersionPrefix>1.0.0</VersionPrefix>
+        <PackageTags>RDF IRI</PackageTags>
+        <PackageId>IriTools</PackageId>
+        <Authors>Dag Hovland</Authors>
+        <PackageVersion>1.0.0</PackageVersion>
+        <RepositoryUrl>https://github.com/equinor/iri-tools</RepositoryUrl>
+        <Description>A library for IRI References, compatible with Rdf.</Description>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <RootNamespace>IriReference</RootNamespace>
     </PropertyGroup>
     
     <ItemGroup>

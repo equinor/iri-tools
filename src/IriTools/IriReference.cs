@@ -8,7 +8,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace IriReference;
+namespace IriTools;
 
 /// <summary>
 /// Useful for other IRIs because a fragment is not part of a URI, and URI.Equals ignores the fragment.
