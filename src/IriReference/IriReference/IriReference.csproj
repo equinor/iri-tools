@@ -6,11 +6,15 @@
         <Nullable>enable</Nullable>
         <PackageReadMeFile>README.md</PackageReadMeFile>
         <PackageLicenseUrl>https://www.gnu.org/licenses/lgpl-3.0.html</PackageLicenseUrl>
+        <PackageReleaseNotes>First release</PackageReleaseNotes>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageTags>RDF,URI</PackageTags>
         <PackageId>IriReference</PackageId>
         <VersionPrefix>1.0.0</VersionPrefix>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
     
     <ItemGroup>

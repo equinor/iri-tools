@@ -38,7 +38,7 @@ public class IriReference : IEquatable<IriReference>
     /// Cannot use Uri.getHashCode since that ignores the fragment
     /// </summary>
     public override int GetHashCode() => ToString().GetHashCode();
-    
+
     public IriReference(Uri uri)
     {
         this.uri = uri;
