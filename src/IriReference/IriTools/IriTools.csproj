@@ -9,12 +9,13 @@
         <PackageReleaseNotes>First release</PackageReleaseNotes>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageTags>RDF,URI</PackageTags>
-        <PackageId>IriReference</PackageId>
+        <PackageId>IriTools</PackageId>
         <VersionPrefix>1.0.0</VersionPrefix>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <RootNamespace>IriReference</RootNamespace>
     </PropertyGroup>
     
     <ItemGroup>
