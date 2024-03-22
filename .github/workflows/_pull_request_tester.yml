@@ -1,0 +1,28 @@
+name: "Run tests (required)"
+on:
+  workflow_dispatch:
+  merge_group:
+  pull_request:
+
+jobs:  
+  dotnet-tests:
+    runs-on: ubuntu-latest
+    name: ".NET Tests & Reports"
+    timeout-minutes: 2
+    steps:
+    - uses: actions/checkout@v3
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    
+    - name: Restore dependencies
+      run: dotnet restore ./src/IriTools.sln
+      
+    - name: Build
+      run: dotnet build ./src/IriTools.sln --no-restore
+      
+    - name: Test
+      run: dotnet test ./src/IriTools.sln   --no-build --verbosity normal 
+    
