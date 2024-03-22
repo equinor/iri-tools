@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <Copyright>Copyright (c) Equinor 2024.</Copyright>
         <PackageReadMeFile>README.md</PackageReadMeFile>
-        <PackageLicenseExpression>LGPL-3.0+</PackageLicenseExpression>
+        <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
         <PackageReleaseNotes>First release, includes IriReference</PackageReleaseNotes>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageTags>RDF IRI</PackageTags>
