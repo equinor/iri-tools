@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IriReference", "IriReference\IriReference.csproj", "{266E0BE4-7C94-43EB-84E1-78D942828B97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IriTools", "IriTools\IriTools.csproj", "{266E0BE4-7C94-43EB-84E1-78D942828B97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{A95A7C87-AFC4-4560-8F5A-13529DB9129D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{266E0BE4-7C94-43EB-84E1-78D942828B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{266E0BE4-7C94-43EB-84E1-78D942828B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{266E0BE4-7C94-43EB-84E1-78D942828B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A95A7C87-AFC4-4560-8F5A-13529DB9129D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A95A7C87-AFC4-4560-8F5A-13529DB9129D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A95A7C87-AFC4-4560-8F5A-13529DB9129D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A95A7C87-AFC4-4560-8F5A-13529DB9129D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
