@@ -8,6 +8,8 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+using System.Text.Json.Serialization;
+
 namespace IriTools;
 
 /// <summary>
@@ -15,6 +17,7 @@ namespace IriTools;
 /// A URI Reference includes the fragment
 /// </summary>
 [Serializable]
+[JsonConverter(typeof(IriReferenceConverter))]
 public class IriReference : IEquatable<IriReference>
 {
     public Uri uri { get; set; }
@@ -22,7 +25,6 @@ public class IriReference : IEquatable<IriReference>
     public static implicit operator IriReference(Uri uri) => new(uri);
     public static implicit operator IriReference(string uri) => new(uri);
     public static implicit operator Uri(IriReference r) => r.uri;
-
 
     bool IEquatable<IriReference>.Equals(IriReference? other) =>
         other != null && (ReferenceEquals(this, other) || ToString().Equals(other.ToString()));
@@ -33,16 +35,17 @@ public class IriReference : IEquatable<IriReference>
     public override string ToString() => uri.ToString();
 
 
-
     /// <summary>
     /// Cannot use Uri.getHashCode since that ignores the fragment
     /// </summary>
     public override int GetHashCode() => ToString().GetHashCode();
 
+    [JsonConstructor]
     public IriReference(Uri uri)
     {
         this.uri = uri;
     }
+
     public IriReference(string uriString)
     {
         uri = new Uri(uriString);
