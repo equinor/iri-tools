@@ -8,7 +8,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace IriTools;
@@ -27,8 +26,6 @@ public class IriReference : IEquatable<IriReference>
     public static implicit operator IriReference(string uri) => new(uri);
     public static implicit operator Uri(IriReference r) => r.uri;
 
-    public static implicit operator JsonElement(IriReference r) => r.ToJsonElement();
-
     bool IEquatable<IriReference>.Equals(IriReference? other) =>
         other != null && (ReferenceEquals(this, other) || ToString().Equals(other.ToString()));
 
@@ -36,8 +33,6 @@ public class IriReference : IEquatable<IriReference>
         other != null && (ReferenceEquals(this, other) || (other is IriReference iri && ToString().Equals(iri.ToString())));
 
     public override string ToString() => uri.ToString();
-
-    public JsonElement ToJsonElement() => JsonDocument.Parse(ToString()).RootElement;
 
 
     /// <summary>
@@ -55,6 +50,4 @@ public class IriReference : IEquatable<IriReference>
     {
         uri = new Uri(uriString);
     }
-
-
 }
