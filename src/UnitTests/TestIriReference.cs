@@ -32,7 +32,7 @@ public class TestIriReference
     }
 
     [Fact]
-    public void Should_Deserialize_Json_To_Uri()
+    public void Should_Deserialize_UriString_To_IriReference()
     {
         // Arrange
         var expectedIriReference = new IriReference("https://example.com/");

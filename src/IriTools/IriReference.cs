@@ -50,7 +50,7 @@ public class IriReference : IEquatable<IriReference>
     {
         this.uri = uri;
     }
-    
+
     public IriReference(string uriString)
     {
         uri = new Uri(uriString);
