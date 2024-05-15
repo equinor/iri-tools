@@ -8,6 +8,9 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace IriTools;
 
 /// <summary>
@@ -15,7 +18,7 @@ namespace IriTools;
 /// A URI Reference includes the fragment
 /// </summary>
 [Serializable]
-public class IriReference : IEquatable<IriReference>
+public class IriReference : JsonConverter<IriReference>, IEquatable<IriReference>
 {
     public Uri uri { get; set; }
 
@@ -23,6 +26,7 @@ public class IriReference : IEquatable<IriReference>
     public static implicit operator IriReference(string uri) => new(uri);
     public static implicit operator Uri(IriReference r) => r.uri;
 
+    public static implicit operator JsonElement(IriReference r) => r.ToJsonElement();
 
     bool IEquatable<IriReference>.Equals(IriReference? other) =>
         other != null && (ReferenceEquals(this, other) || ToString().Equals(other.ToString()));
@@ -32,6 +36,7 @@ public class IriReference : IEquatable<IriReference>
 
     public override string ToString() => uri.ToString();
 
+    public JsonElement ToJsonElement() => JsonDocument.Parse(ToString()).RootElement;
 
 
     /// <summary>
@@ -39,12 +44,31 @@ public class IriReference : IEquatable<IriReference>
     /// </summary>
     public override int GetHashCode() => ToString().GetHashCode();
 
+    [JsonConstructor]
     public IriReference(Uri uri)
     {
         this.uri = uri;
     }
+
+    // [JsonConstructor]
     public IriReference(string uriString)
     {
         uri = new Uri(uriString);
+    }
+
+    public override IriReference Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        string uriString = reader.GetString();
+        return new IriReference(uriString);
+    }
+
+    public override void Write(Utf8JsonWriter writer, IriReference value, JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value.ToString());
+    }
+
+    public override bool CanConvert(Type typeToConvert)
+    {
+        return typeToConvert == typeof(IriReference);
     }
 }
