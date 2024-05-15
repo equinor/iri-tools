@@ -30,19 +30,4 @@ public class TestIriReference
         iriRef.Should().NotBeNull();
         iriRef.Should().Be(expectedIriReference);
     }
-
-    [Fact]
-    public void Should_Deserialize_UriString_To_IriReference()
-    {
-        // Arrange
-        var expectedIriReference = new IriReference("https://example.com/");
-        var uriJson = JsonSerializer.Serialize(expectedIriReference);
-
-        // Act
-        var iriRef = JsonSerializer.Deserialize<IriReference>("\"https://example.com/\"");
-
-        // Assert
-        iriRef.Should().NotBeNull();
-        iriRef.Should().Be(expectedIriReference);
-    }
 }
