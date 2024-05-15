@@ -18,7 +18,8 @@ namespace IriTools;
 /// A URI Reference includes the fragment
 /// </summary>
 [Serializable]
-public class IriReference : JsonConverter<IriReference>, IEquatable<IriReference>
+[JsonConverter(typeof(IriReferenceConverter))]
+public class IriReference : IEquatable<IriReference>
 {
     public Uri uri { get; set; }
 
@@ -49,26 +50,11 @@ public class IriReference : JsonConverter<IriReference>, IEquatable<IriReference
     {
         this.uri = uri;
     }
-
-    // [JsonConstructor]
+    
     public IriReference(string uriString)
     {
         uri = new Uri(uriString);
     }
 
-    public override IriReference Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-    {
-        string uriString = reader.GetString();
-        return new IriReference(uriString);
-    }
 
-    public override void Write(Utf8JsonWriter writer, IriReference value, JsonSerializerOptions options)
-    {
-        writer.WriteStringValue(value.ToString());
-    }
-
-    public override bool CanConvert(Type typeToConvert)
-    {
-        return typeToConvert == typeof(IriReference);
-    }
 }

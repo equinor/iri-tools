@@ -35,11 +35,11 @@ public class TestIriReference
     public void Should_Deserialize_Json_To_Uri()
     {
         // Arrange
-        var expectedIriReference = new Uri("https://example.com/");
+        var expectedIriReference = new IriReference("https://example.com/");
         var uriJson = JsonSerializer.Serialize(expectedIriReference);
 
         // Act
-        var iriRef = JsonSerializer.Deserialize<Uri>(uriJson);
+        var iriRef = JsonSerializer.Deserialize<IriReference>("\"https://example.com/\"");
 
         // Assert
         iriRef.Should().NotBeNull();
