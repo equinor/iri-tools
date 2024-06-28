@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Copyright>Copyright (c) Equinor 2024.</Copyright>
@@ -12,7 +12,7 @@
         <PackageTags>RDF IRI</PackageTags>
         <PackageId>IriTools</PackageId>
         <Authors>Dag Hovland</Authors>
-        <PackageVersion>1.1.0</PackageVersion>
+        <PackageVersion>2.0.0</PackageVersion>
         <RepositoryUrl>https://github.com/equinor/iri-tools</RepositoryUrl>
         <Description>A library for IRI References, compatible with Rdf.</Description>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
