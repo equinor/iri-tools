@@ -29,4 +29,12 @@ public class TestIriReference
         var iriRef2 = new IriReference("https://example.com/id");
         iriRef1.CompareTo(iriRef2).Should().Be(0);
     }
+        
+    [Fact]
+    public void IriReference__Implements__IComparableObject()
+    {
+        IComparable iriRef1 = new IriReference("https://example.com/id#1");
+        object iriRef2 = new IriReference("https://example.com/id#2");
+        iriRef1.CompareTo(iriRef2).Should().Be(-1);
+    }
 }
