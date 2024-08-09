@@ -11,10 +11,17 @@ public class TestIriReference
     {
         var iriRef1 = new IriReference("https://example.com/id#1");
         var iriRef2 = new IriReference("https://example.com/id#2");
-        iriRef1.Should().NotBeEquivalentTo(iriRef2);
+        iriRef1.Should().NotBe(iriRef2);
         iriRef1.uri.Equals(iriRef2.uri).Should().BeTrue();
     }
 
+    [Fact]
+    public void IriReference__Implements__IComparable()
+    {
+        IComparable<IriReference> iriRef1 = new IriReference("https://example.com/id#1");
+        var iriRef2 = new IriReference("https://example.com/id#2");
+        iriRef1.CompareTo(iriRef2).Should().Be(-1);
+    }
 
     [Fact]
     public void Should_Deserialize_Json_To_IriReference()
