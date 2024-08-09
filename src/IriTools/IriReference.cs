@@ -18,7 +18,7 @@ namespace IriTools;
 /// </summary>
 [Serializable]
 [JsonConverter(typeof(IriReferenceConverter))]
-public class IriReference : IEquatable<IriReference>
+public class IriReference : IEquatable<IriReference>, IComparable<IriReference>
 {
     public Uri uri { get; set; }
 
@@ -28,6 +28,12 @@ public class IriReference : IEquatable<IriReference>
 
     bool IEquatable<IriReference>.Equals(IriReference? other) =>
         other != null && (ReferenceEquals(this, other) || ToString().Equals(other.ToString()));
+
+    public int CompareTo(IriReference? other)
+    {
+        if (other == null) throw new NullReferenceException("Cannot compare to null IriReference");
+        return String.Compare(ToString(), other.ToString(), StringComparison.Ordinal);
+    }
 
     public override bool Equals(object? other) =>
         other != null && (ReferenceEquals(this, other) || (other is IriReference iri && ToString().Equals(iri.ToString())));
