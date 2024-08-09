@@ -16,13 +16,21 @@ public class TestIriReference
     }
 
     [Fact]
-    public void IriReference__Implements__IComparable()
+    public void IriReference__Implements__IComparableTyped()
     {
         IComparable<IriReference> iriRef1 = new IriReference("https://example.com/id#1");
         var iriRef2 = new IriReference("https://example.com/id#2");
         iriRef1.CompareTo(iriRef2).Should().Be(-1);
     }
-
+    
+    [Fact]
+    public void IriReference__Implements__IComparableObject()
+    {
+        IComparable iriRef1 = new IriReference("https://example.com/id#1");
+        object iriRef2 = new IriReference("https://example.com/id#2");
+        iriRef1.CompareTo(iriRef2).Should().Be(-1);
+    }
+    
     [Fact]
     public void Should_Deserialize_Json_To_IriReference()
     {
