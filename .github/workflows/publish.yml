@@ -8,6 +8,8 @@ on:
     paths:
       - ".*src/IriTools/IriReference.*"
   
+permissions:
+  contents: read
 jobs:
   publish:
     name: "Nuget publish"
