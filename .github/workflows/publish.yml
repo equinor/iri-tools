@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - ".*src/IriTools/IriReference.*"
+      - ".*src/IriTools/*"
   
 permissions:
   contents: read
@@ -15,14 +15,16 @@ jobs:
     name: "Nuget publish"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
+        
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 6.0.x
+        uses: actions/setup-dotnet@v5
+        
       - name: Restore dependencies
         run: dotnet restore ./src/IriTools.sln
+        
       - name: Build
         run: dotnet build ./src/IriTools.sln --no-restore -c release
+        
       - name: Publish
         run: dotnet nuget push ./src/IriTools/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }}  --source https://api.nuget.org/v3/index.json
