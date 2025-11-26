@@ -12,7 +12,7 @@
         <PackageTags>RDF IRI</PackageTags>
         <PackageId>IriTools</PackageId>
         <Authors>Dag Hovland</Authors>
-        <PackageVersion>2.2.0</PackageVersion>
+        <PackageVersion>2.3.0</PackageVersion>
         <RepositoryUrl>https://github.com/equinor/iri-tools</RepositoryUrl>
         <Description>A library for IRI References, compatible with Rdf.</Description>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>

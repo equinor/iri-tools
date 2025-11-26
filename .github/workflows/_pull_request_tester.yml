@@ -12,13 +12,11 @@ jobs:
     name: ".NET Tests & Reports"
     timeout-minutes: 2
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    
+      uses: actions/setup-dotnet@v5
+      
     - name: Restore dependencies IriTools
       run: dotnet restore ./src/IriTools.sln
       
