@@ -71,6 +71,6 @@ public class TestIriReference
 
         // Assert
         newIri.Should().NotBeNull();
-        newIri.ToString().Should().Be("https://example.com/%3C%2Fparam%3E/a%281%29/b/c");
+        newIri.ToString().Should().Be("https://example.com/a%281%29/b/c");
     }
 }
