@@ -59,4 +59,18 @@ public class TestIriReference
         iriRef.Should().NotBeNull();
         iriRef.Should().Be(expectedIriReference);
     }
+    
+    [Fact]
+    public void Segments__Are__Escaped()
+    {
+        // Arrange
+        var baseIri = new IriReference("https://example.com/");
+        
+        // Act
+        var newIri = IriReference.FromDataSegments(baseIri, "a(1)", "b", "c");
+        
+        // Assert
+        newIri.Should().NotBeNull();
+        newIri.ToString().Should().Be("https://example.com/%3C%2Fparam%3E/a%281%29/b/c");
+    }
 }
