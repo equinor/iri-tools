@@ -60,11 +60,13 @@ public class TestIriReference
         iriRef.Should().Be(expectedIriReference);
     }
 
-    [Fact]
-    public void Segments__Are__Escaped()
+    [Theory]
+    [InlineData("https://example.com/")]
+    [InlineData("https://example.com")]
+    public void Segments__Are__Escaped(string baseIriString)
     {
         // Arrange
-        var baseIri = new IriReference("https://example.com/");
+        var baseIri = new IriReference(baseIriString);
 
         // Act
         var newIri = IriReference.FromDataSegments(baseIri, "a(1)", "b", "c");
