@@ -26,6 +26,19 @@ public class IriReference : IEquatable<IriReference>, IComparable<IriReference>,
     public static implicit operator IriReference(string uri) => new(uri);
     public static implicit operator Uri(IriReference r) => r.uri;
 
+    /// <summary>
+    /// Escapes the segments as data segments and appends them to the base IRI
+    /// </summary>
+    /// <param name="baseIri">The base part of the IRI, f.ex. https://example.com/</param>
+    /// <param name="segments">Any number of segments, f.ex. a(1), b and c</param>
+    /// <returns>The escaped combined IRI, f.ex. https://example.com/a%281%29/b/c</returns>
+    public static IriReference FromDataSegments(IriReference baseIri, params string[] segments)
+    {
+        var escapedSegments = segments.Select(v => Uri.EscapeDataString(v.Trim())).ToArray();
+        var path = string.Join("/", escapedSegments);
+        return new Uri(baseIri.uri, path);
+    }
+
     bool IEquatable<IriReference>.Equals(IriReference? other) =>
         other != null && (ReferenceEquals(this, other) || ToString().Equals(other.ToString()));
 
@@ -45,13 +58,14 @@ public class IriReference : IEquatable<IriReference>, IComparable<IriReference>,
             IriReference iri => string.Compare(ToString(), iri.ToString(), StringComparison.Ordinal),
             _ => throw new ArgumentException("Object is not an IriReference")
         };
-    
-    
+
+
     public override bool Equals(object? other) =>
         other != null && (ReferenceEquals(this, other) || (other is IriReference iri && ToString().Equals(iri.ToString())));
 
     public override string ToString() => uri.ToString();
-    
+
+
 
 
     /// <summary>

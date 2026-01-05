@@ -22,7 +22,7 @@ public class TestIriReference
         var iriRef2 = new IriReference("https://example.com/id#2");
         iriRef1.CompareTo(iriRef2).Should().Be(-1);
     }
-    
+
     [Fact]
     public void IriReference__Implements__IComparableObject()
     {
@@ -30,7 +30,7 @@ public class TestIriReference
         object iriRef2 = new IriReference("https://example.com/id#2");
         iriRef1.CompareTo(iriRef2).Should().Be(-1);
     }
-    
+
     [Fact]
     public void Should_Deserialize_Json_To_IriReference()
     {
@@ -58,5 +58,21 @@ public class TestIriReference
         // Assert
         iriRef.Should().NotBeNull();
         iriRef.Should().Be(expectedIriReference);
+    }
+
+    [Theory]
+    [InlineData("https://example.com/")]
+    [InlineData("https://example.com")]
+    public void Segments__Are__Escaped(string baseIriString)
+    {
+        // Arrange
+        var baseIri = new IriReference(baseIriString);
+
+        // Act
+        var newIri = IriReference.FromDataSegments(baseIri, "a(1)", "b", "c");
+
+        // Assert
+        newIri.Should().NotBeNull();
+        newIri.ToString().Should().Be("https://example.com/a%281%29/b/c");
     }
 }
